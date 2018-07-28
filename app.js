@@ -4,8 +4,7 @@ const path = require('path');
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const passport2 = require("passport");
-// const config = require("./config/database");
-// const users = require("./routes/users");
+
 const admins= require("./routes/admins");
 
 
