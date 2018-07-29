@@ -579,16 +579,6 @@ var AdminService = (function () {
         return this.http.get('/admins/routeDetails', { headers: headers })
             .map(function (res) { return res.json(); });
     };
-    // deleteRoute(routeHalt) {
-    //   let headers = new Headers();
-    //   headers.append('Content-type', 'application/json');
-    //   alert('Route is deleted'+routeHalt);
-    //   return this.http.delete('/admins/deleteRoute', new RequestOptions({
-    //     headers: headers,
-    //     body: routeHalt
-    //   }))
-    //     .map(res => res.json());
-    // }
     AdminService.prototype.loggedIn = function () {
         return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3_angular2_jwt__["tokenNotExpired"])('id_token');
     };

@@ -9,9 +9,9 @@ const jwt = require("jsonwebtoken");
 var connection = mysql.createConnection({
     host: 'sql12.freesqldatabase.com',
     port: '3306',
-    user: 'sql12248552',
-    password: 'GaGnrPW2Aw',
-    database: 'sql12248552'
+    user: 'sql12249655',
+    password: 'Tj1MJJvpuE',
+    database: 'sql12249655'
 });
 
 connection.connect(function(error) {
@@ -132,14 +132,6 @@ router.get('/routeDetails', (req, res, next) => {
     });
 });
 
-// router.delete('/deleteRoute', (req, res, next) => {
-//     console.log('req')
-//     const routeId = req.body.routeId
-//     const haltId = req.body.haltId
-//     console.log(routeId)
-//     console.log(haltId)
-//     connection.query("delete from Route where routeId ="+"'"+routeId+"'"+"and haltId ="+"'"+haltId+"'")
 
-// });
 
 module.exports = router;
