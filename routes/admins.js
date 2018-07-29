@@ -7,11 +7,11 @@ const jwt = require("jsonwebtoken");
 
 
 var connection = mysql.createConnection({
-    host: 'localhost',
+    host: 'sql12.freesqldatabase.com',
     port: '3306',
-    user: 'root',
-    password: '',
-    database: 'busDB'
+    user: 'sql12248552',
+    password: 'GaGnrPW2Aw',
+    database: 'sql12248552'
 });
 
 connection.connect(function(error) {
