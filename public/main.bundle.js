@@ -21,7 +21,7 @@ webpackEmptyContext.id = 389;
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(477);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__environments_environment__ = __webpack_require__(517);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__environments_environment__ = __webpack_require__(516);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_app_module__ = __webpack_require__(509);
 
 
@@ -35,118 +35,13 @@ __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dyna
 
 /***/ }),
 
-/***/ 41:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(148);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__(685);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angular2_jwt__ = __webpack_require__(518);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angular2_jwt___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_angular2_jwt__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_router__ = __webpack_require__(64);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AdminService; });
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-
-
-var AdminService = (function () {
-    function AdminService(http, router) {
-        this.http = http;
-        this.router = router;
-    }
-    AdminService.prototype.addUser = function (user) {
-        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
-        headers.append('Content-type', 'application/json');
-        return this.http.post('/admins/addUser', user, { headers: headers })
-            .map(function (res) { return res.json(); });
-    };
-    AdminService.prototype.addRoute = function (route) {
-        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
-        headers.append('Content-type', 'application/json');
-        return this.http.post('/admins/addRoute', route, { headers: headers })
-            .map(function (res) { return res.json(); });
-    };
-    AdminService.prototype.authenticateAdmin = function (admin) {
-        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
-        headers.append('Content-type', 'application/json');
-        return this.http.post('/admins/authenticateAdmin', admin, { headers: headers })
-            .map(function (res) { return res.json(); });
-    };
-    AdminService.prototype.getProfile = function () {
-        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
-        this.loadToken();
-        headers.append('Authorization', this.authToken);
-        headers.append('Content-type', 'application/json');
-        return this.http.get('/admins/profile', { headers: headers })
-            .map(function (res) { return res.json(); });
-    };
-    AdminService.prototype.getRoutes = function () {
-        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
-        headers.append('Content-type', 'application/json');
-        return this.http.get('/admins/routeDetails', { headers: headers })
-            .map(function (res) { return res.json(); });
-    };
-    AdminService.prototype.deleteRoute = function (routeId) {
-        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
-        headers.append('Content-type', 'application/json');
-        alert('Route is deleted' + routeId);
-        this.router.navigate(['/routeDetails']);
-        return this.http.delete('/admins/deleteRoute', new __WEBPACK_IMPORTED_MODULE_1__angular_http__["RequestOptions"]({
-            headers: headers,
-            body: routeId
-        }))
-            .map(function (res) { return res.json(); });
-    };
-    AdminService.prototype.loggedIn = function () {
-        return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3_angular2_jwt__["tokenNotExpired"])('id_token');
-    };
-    ;
-    AdminService.prototype.loadToken = function () {
-        var token = localStorage.getItem('id_token');
-        this.authToken = token;
-    };
-    AdminService.prototype.storeAdminData = function (token, admin) {
-        this.authToken = token;
-        this.admin = admin;
-        localStorage.setItem('id_token', this.authToken);
-        localStorage.setItem('admin', JSON.stringify(this.admin));
-    };
-    AdminService.prototype.logout = function () {
-        this.authToken = null;
-        this.admin = null;
-        localStorage.clear();
-    };
-    AdminService = __decorate([
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(), 
-        __metadata('design:paramtypes', [(typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["Http"] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_1__angular_http__["Http"]) === 'function' && _a) || Object, (typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_4__angular_router__["b" /* Router */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_4__angular_router__["b" /* Router */]) === 'function' && _b) || Object])
-    ], AdminService);
-    return AdminService;
-    var _a, _b;
-}());
-//# sourceMappingURL=C:/Users/Supun Ranathunga/Desktop/busAdmin/adminapp/src/admin.service.js.map
-
-/***/ }),
-
 /***/ 507:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(64);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_adminService_admin_service__ = __webpack_require__(41);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_adminService_admin_service__ = __webpack_require__(54);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AuthGuardService; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -229,14 +124,13 @@ var AppComponent = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_router__ = __webpack_require__(64);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__app_component__ = __webpack_require__(508);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_navbar_navbar_component__ = __webpack_require__(510);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pages_login_login_component__ = __webpack_require__(514);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pages_profile_profile_component__ = __webpack_require__(515);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pages_login_login_component__ = __webpack_require__(513);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pages_profile_profile_component__ = __webpack_require__(514);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__pages_add_user_add_user_component__ = __webpack_require__(512);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__pages_add_route_add_route_component__ = __webpack_require__(511);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__services_adminService_admin_service__ = __webpack_require__(41);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__services_adminService_admin_service__ = __webpack_require__(54);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__Guards_auth_guard__ = __webpack_require__(507);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__pages_route_details_route_details_component__ = __webpack_require__(516);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__pages_delete_delete_component__ = __webpack_require__(513);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__pages_route_details_route_details_component__ = __webpack_require__(515);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -261,13 +155,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-
 var appRoutes = [
     { path: '', component: __WEBPACK_IMPORTED_MODULE_7__pages_login_login_component__["a" /* LoginComponent */] },
     { path: 'profile', component: __WEBPACK_IMPORTED_MODULE_8__pages_profile_profile_component__["a" /* ProfileComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_12__Guards_auth_guard__["a" /* AuthGuardService */]] },
     { path: 'addUser', component: __WEBPACK_IMPORTED_MODULE_9__pages_add_user_add_user_component__["a" /* AddUserComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_12__Guards_auth_guard__["a" /* AuthGuardService */]] },
     { path: 'addRoute', component: __WEBPACK_IMPORTED_MODULE_10__pages_add_route_add_route_component__["a" /* AddRouteComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_12__Guards_auth_guard__["a" /* AuthGuardService */]] },
-    { path: 'deleteRoute', component: __WEBPACK_IMPORTED_MODULE_14__pages_delete_delete_component__["a" /* DeleteComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_12__Guards_auth_guard__["a" /* AuthGuardService */]] },
     { path: 'routeDetails', component: __WEBPACK_IMPORTED_MODULE_13__pages_route_details_route_details_component__["a" /* RouteDetailsComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_12__Guards_auth_guard__["a" /* AuthGuardService */]] },
 ];
 var AppModule = (function () {
@@ -277,7 +169,7 @@ var AppModule = (function () {
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["NgModule"])({
             declarations: [
                 __WEBPACK_IMPORTED_MODULE_5__app_component__["a" /* AppComponent */], __WEBPACK_IMPORTED_MODULE_6__components_navbar_navbar_component__["a" /* NavbarComponent */], __WEBPACK_IMPORTED_MODULE_7__pages_login_login_component__["a" /* LoginComponent */], __WEBPACK_IMPORTED_MODULE_8__pages_profile_profile_component__["a" /* ProfileComponent */], __WEBPACK_IMPORTED_MODULE_9__pages_add_user_add_user_component__["a" /* AddUserComponent */], __WEBPACK_IMPORTED_MODULE_10__pages_add_route_add_route_component__["a" /* AddRouteComponent */],
-                __WEBPACK_IMPORTED_MODULE_13__pages_route_details_route_details_component__["a" /* RouteDetailsComponent */], __WEBPACK_IMPORTED_MODULE_14__pages_delete_delete_component__["a" /* DeleteComponent */]
+                __WEBPACK_IMPORTED_MODULE_13__pages_route_details_route_details_component__["a" /* RouteDetailsComponent */]
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
@@ -301,7 +193,7 @@ var AppModule = (function () {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_adminService_admin_service__ = __webpack_require__(41);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_adminService_admin_service__ = __webpack_require__(54);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NavbarComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -326,7 +218,7 @@ var NavbarComponent = (function () {
     NavbarComponent = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'app-navbar',
-            template: __webpack_require__(673)
+            template: __webpack_require__(672)
         }), 
         __metadata('design:paramtypes', [(typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_adminService_admin_service__["a" /* AdminService */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_1__services_adminService_admin_service__["a" /* AdminService */]) === 'function' && _a) || Object])
     ], NavbarComponent);
@@ -342,7 +234,7 @@ var NavbarComponent = (function () {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_adminService_admin_service__ = __webpack_require__(41);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_adminService_admin_service__ = __webpack_require__(54);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__(64);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AddRouteComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -387,7 +279,7 @@ var AddRouteComponent = (function () {
     AddRouteComponent = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'app-add-route',
-            template: __webpack_require__(674)
+            template: __webpack_require__(673)
         }), 
         __metadata('design:paramtypes', [(typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_adminService_admin_service__["a" /* AdminService */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_1__services_adminService_admin_service__["a" /* AdminService */]) === 'function' && _a) || Object, (typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */]) === 'function' && _b) || Object])
     ], AddRouteComponent);
@@ -403,7 +295,7 @@ var AddRouteComponent = (function () {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_adminService_admin_service__ = __webpack_require__(41);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_adminService_admin_service__ = __webpack_require__(54);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__(64);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AddUserComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -447,7 +339,7 @@ var AddUserComponent = (function () {
     AddUserComponent = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'app-add-user',
-            template: __webpack_require__(675)
+            template: __webpack_require__(674)
         }), 
         __metadata('design:paramtypes', [(typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_adminService_admin_service__["a" /* AdminService */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_1__services_adminService_admin_service__["a" /* AdminService */]) === 'function' && _a) || Object, (typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */]) === 'function' && _b) || Object])
     ], AddUserComponent);
@@ -463,49 +355,7 @@ var AddUserComponent = (function () {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_adminService_admin_service__ = __webpack_require__(41);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DeleteComponent; });
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-var DeleteComponent = (function () {
-    function DeleteComponent(adminService) {
-        this.adminService = adminService;
-    }
-    DeleteComponent.prototype.ngOnInit = function () {
-    };
-    DeleteComponent.prototype.deleteRoute = function () {
-        var routeId = this.routeId;
-        this.adminService.deleteRoute(routeId);
-    };
-    DeleteComponent = __decorate([
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'app-delete',
-            template: __webpack_require__(676)
-        }), 
-        __metadata('design:paramtypes', [(typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_adminService_admin_service__["a" /* AdminService */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_1__services_adminService_admin_service__["a" /* AdminService */]) === 'function' && _a) || Object])
-    ], DeleteComponent);
-    return DeleteComponent;
-    var _a;
-}());
-//# sourceMappingURL=C:/Users/Supun Ranathunga/Desktop/busAdmin/adminapp/src/delete.component.js.map
-
-/***/ }),
-
-/***/ 514:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_adminService_admin_service__ = __webpack_require__(41);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_adminService_admin_service__ = __webpack_require__(54);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__(64);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LoginComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -549,7 +399,7 @@ var LoginComponent = (function () {
     LoginComponent = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'app-login',
-            template: __webpack_require__(677)
+            template: __webpack_require__(675)
         }), 
         __metadata('design:paramtypes', [(typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_adminService_admin_service__["a" /* AdminService */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_1__services_adminService_admin_service__["a" /* AdminService */]) === 'function' && _a) || Object, (typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */]) === 'function' && _b) || Object])
     ], LoginComponent);
@@ -560,12 +410,12 @@ var LoginComponent = (function () {
 
 /***/ }),
 
-/***/ 515:
+/***/ 514:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_adminService_admin_service__ = __webpack_require__(41);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_adminService_admin_service__ = __webpack_require__(54);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__(64);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ProfileComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -591,7 +441,7 @@ var ProfileComponent = (function () {
     ProfileComponent = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'app-profile',
-            template: __webpack_require__(678)
+            template: __webpack_require__(676)
         }), 
         __metadata('design:paramtypes', [(typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_adminService_admin_service__["a" /* AdminService */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_1__services_adminService_admin_service__["a" /* AdminService */]) === 'function' && _a) || Object, (typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */]) === 'function' && _b) || Object])
     ], ProfileComponent);
@@ -602,12 +452,12 @@ var ProfileComponent = (function () {
 
 /***/ }),
 
-/***/ 516:
+/***/ 515:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_adminService_admin_service__ = __webpack_require__(41);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_adminService_admin_service__ = __webpack_require__(54);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RouteDetailsComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -638,7 +488,7 @@ var RouteDetailsComponent = (function () {
     RouteDetailsComponent = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'app-route-details',
-            template: __webpack_require__(679)
+            template: __webpack_require__(677)
         }), 
         __metadata('design:paramtypes', [(typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_adminService_admin_service__["a" /* AdminService */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_1__services_adminService_admin_service__["a" /* AdminService */]) === 'function' && _a) || Object])
     ], RouteDetailsComponent);
@@ -649,7 +499,7 @@ var RouteDetailsComponent = (function () {
 
 /***/ }),
 
-/***/ 517:
+/***/ 516:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -665,56 +515,153 @@ var environment = {
 
 /***/ }),
 
-/***/ 673:
+/***/ 54:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(148);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__(683);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angular2_jwt__ = __webpack_require__(517);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angular2_jwt___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_angular2_jwt__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_router__ = __webpack_require__(64);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AdminService; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+
+var AdminService = (function () {
+    function AdminService(http, router) {
+        this.http = http;
+        this.router = router;
+    }
+    AdminService.prototype.addUser = function (user) {
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
+        headers.append('Content-type', 'application/json');
+        return this.http.post('/admins/addUser', user, { headers: headers })
+            .map(function (res) { return res.json(); });
+    };
+    AdminService.prototype.addRoute = function (route) {
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
+        headers.append('Content-type', 'application/json');
+        return this.http.post('/admins/addRoute', route, { headers: headers })
+            .map(function (res) { return res.json(); });
+    };
+    AdminService.prototype.authenticateAdmin = function (admin) {
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
+        headers.append('Content-type', 'application/json');
+        return this.http.post('/admins/authenticateAdmin', admin, { headers: headers })
+            .map(function (res) { return res.json(); });
+    };
+    AdminService.prototype.getProfile = function () {
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
+        this.loadToken();
+        headers.append('Authorization', this.authToken);
+        headers.append('Content-type', 'application/json');
+        return this.http.get('/admins/profile', { headers: headers })
+            .map(function (res) { return res.json(); });
+    };
+    AdminService.prototype.getRoutes = function () {
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
+        headers.append('Content-type', 'application/json');
+        return this.http.get('/admins/routeDetails', { headers: headers })
+            .map(function (res) { return res.json(); });
+    };
+    // deleteRoute(routeHalt) {
+    //   let headers = new Headers();
+    //   headers.append('Content-type', 'application/json');
+    //   alert('Route is deleted'+routeHalt);
+    //   return this.http.delete('/admins/deleteRoute', new RequestOptions({
+    //     headers: headers,
+    //     body: routeHalt
+    //   }))
+    //     .map(res => res.json());
+    // }
+    AdminService.prototype.loggedIn = function () {
+        return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3_angular2_jwt__["tokenNotExpired"])('id_token');
+    };
+    ;
+    AdminService.prototype.loadToken = function () {
+        var token = localStorage.getItem('id_token');
+        this.authToken = token;
+    };
+    AdminService.prototype.storeAdminData = function (token, admin) {
+        this.authToken = token;
+        this.admin = admin;
+        localStorage.setItem('id_token', this.authToken);
+        localStorage.setItem('admin', JSON.stringify(this.admin));
+    };
+    AdminService.prototype.logout = function () {
+        this.authToken = null;
+        this.admin = null;
+        localStorage.clear();
+    };
+    AdminService = __decorate([
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(), 
+        __metadata('design:paramtypes', [(typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["Http"] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_1__angular_http__["Http"]) === 'function' && _a) || Object, (typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_4__angular_router__["b" /* Router */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_4__angular_router__["b" /* Router */]) === 'function' && _b) || Object])
+    ], AdminService);
+    return AdminService;
+    var _a, _b;
+}());
+//# sourceMappingURL=C:/Users/Supun Ranathunga/Desktop/busAdmin/adminapp/src/admin.service.js.map
+
+/***/ }),
+
+/***/ 672:
 /***/ (function(module, exports) {
 
 module.exports = "<nav class=\"navbar navbar-expand navbar-dark bg-dark\">\n    <a class=\"navbar-brand\">Bus Admin</a>\n    <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarsExample03\"\n            aria-controls=\"navbarsExample03\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n      <span class=\"navbar-toggler-icon\"></span>\n    </button>\n  \n    <div   class=\"collapse navbar-collapse\">\n      <ul class=\"nav navbar-nav\">\n        <li *ngIf=\"adminService.loggedIn()\">\n          <a class=\"nav-link\" routerLink=\"/profile\">Profile<span class=\"sr-only\">(current)</span></a>\n        </li>\n        <li *ngIf=\"adminService.loggedIn()\">\n          <a class=\"nav-link\" routerLink=\"/routeDetails\">Routes<span class=\"sr-only\">(current)</span></a>\n        </li>\n      </ul>\n    </div>\n    <ul class=\"nav navbar-nav navbar-right\">\n      <li *ngIf=\"adminService.loggedIn()\">\n        <a  class=\"nav-link\" (click)=\"logoutClick()\" href=\"#\">Log Out<span class=\"sr-only\">(current)</span></a>\n      </li>\n    </ul>\n  </nav>\n  \n  \n\n"
 
 /***/ }),
 
-/***/ 674:
+/***/ 673:
 /***/ (function(module, exports) {
 
 module.exports = "<body>\n    <form class=\"text-center\">\n    \n      <h1 class=\"h3 mb-3 font-weight-normal\">Add New Route</h1>\n      <div class=\"container\">\n        <div class=\"form-group\">\n          <!-- <flash-messages></flash-messages> -->\n          <input type=\"text\" class=\"form-control input-lg\" [(ngModel)]=\"routeId\" name=\"routeId\" placeholder=\"Route ID\" autofocus><br><br>\n          <input type=\"text\" class=\"form-control input-lg\" [(ngModel)]=\"haltId\" name=\"haltId\" placeholder=\"Halt ID\" autofocus><br><br>\n          <input type=\"text\" class=\"form-control input-lg\" [(ngModel)]=\"weight\" name=\"weight\" placeholder=\"Weight\" autofocus><br><br>\n          <input type=\"text\" class=\"form-control input-lg\" [(ngModel)]=\"latitude\" name=\"latitude\" placeholder=\"Latitude\" autofocus><br><br>\n          <input type=\"text\" class=\"form-control input-lg\" [(ngModel)]=\"longitude\" name=\"longitude\" placeholder=\"Longitude\" autofocus><br><br>\n        \n        </div>\n      </div>\n    \n    \n      <button (click)=\"addRoute()\" class=\"btn btn-lg btn-primary \" type=\"submit\">Add Route</button>\n      \n    </form> \n  </body>\n"
 
 /***/ }),
 
-/***/ 675:
+/***/ 674:
 /***/ (function(module, exports) {
 
 module.exports = "<body>\n    <form class=\"text-center\">\n    \n      <h1 class=\"h3 mb-3 font-weight-normal\">Add New User</h1>\n      <div class=\"container\">\n        <div class=\"form-group\">\n          <!-- <flash-messages></flash-messages> -->\n          <input type=\"text\" class=\"form-control input-lg\" [(ngModel)]=\"id\" name=\"id\" placeholder=\"User ID\" autofocus><br><br>\n          <input type=\"text\" class=\"form-control input-lg\" [(ngModel)]=\"name\" name=\"name\" placeholder=\"Name\" autofocus><br><br>\n          <input type=\"text\" class=\"form-control input-lg\" [(ngModel)]=\"balance\" name=\"balance\" placeholder=\"Balance\" autofocus><br><br>\n          \n          \n        </div>\n      </div>\n    \n    \n      <button (click)=\"addUser()\" class=\"btn btn-lg btn-primary \" type=\"submit\">Add User</button>\n      \n    </form> \n  </body>"
 
 /***/ }),
 
-/***/ 676:
-/***/ (function(module, exports) {
-
-module.exports = "<body>\n  <form class=\"text-center\">\n  \n    <h1 class=\"h3 mb-3 font-weight-normal\">Delete Route</h1>\n    <div class=\"container\">\n      <div class=\"form-group\">\n        \n        <input type=\"text\" class=\"form-control input-lg\" [(ngModel)]=\"routeId\" name=\"routeId\" placeholder=\"Enter the Route Id\" autofocus><br><br>\n        \n      </div>\n    </div>\n  \n  \n    <button (click)=\"deleteRoute()\" class=\"btn btn-lg btn-primary \" type=\"submit\">Delete Route</button>\n    \n  </form> \n</body>"
-
-/***/ }),
-
-/***/ 677:
+/***/ 675:
 /***/ (function(module, exports) {
 
 module.exports = "<body>\n  <form class=\"text-center\">\n  \n    <h1 class=\"h3 mb-3 font-weight-normal\">Log in</h1>\n    <div class=\"container\">\n      <div class=\"form-group\">\n        <!-- <flash-messages></flash-messages> -->\n        <input type=\"text\" class=\"form-control input-lg\" [(ngModel)]=\"id\" name=\"id\" placeholder=\"Your ID\" autofocus><br><br>\n        <input type=\"password\" class=\"form-control input-lg\" [(ngModel)]=\"password\" name=\"password\" placeholder=\"Password\" autofocus><br><br>\n        \n      </div>\n    </div>\n  \n  \n    <button (click)=\"loginClick()\" class=\"btn btn-lg btn-primary \" type=\"submit\">Log in</button>\n    \n  </form> \n</body>\n"
 
 /***/ }),
 
-/***/ 678:
+/***/ 676:
 /***/ (function(module, exports) {
 
-module.exports = "<div *ngIf=\"admin\">\n  <br>\n  <div class=\"container\" >\n    <div class=\"row\">\n      <div class=\"col-sm-6\"><h2 class=\"page-header\">Profile</h2></div>\n      <div class=\"btn-group\">\n        <button class=\"btn btn-default\" [ngStyle]=\"{color: 'red'}\" routerLink=\"/addUser\">Add New User</button>\n        <button class=\"btn btn-default\" [ngStyle]=\"{color: 'black'}\" routerLink=\"/addRoute\">Add New Route</button>\n        <button class=\"btn btn-default\" [ngStyle]=\"{color: 'black'}\" routerLink=\"/deleteRoute\">Delete Route</button>\n      </div>\n    </div>\n    <br>\n    <!--only admin can add an admin-->\n    <ul class=\"list-group\">\n      <li class=\"list-group-item\">Admin Name : {{admin.name}} </li>\n      \n    </ul>\n  </div>\n</div>\n"
+module.exports = "<div *ngIf=\"admin\">\n  <br>\n  <div class=\"container\" >\n    <div class=\"row\">\n      <div class=\"col-sm-6\"><h2 class=\"page-header\">Profile</h2></div>\n      <div class=\"btn-group\">\n        <button class=\"btn btn-default\" [ngStyle]=\"{color: 'red'}\" routerLink=\"/addUser\">Add New User</button>\n        <button class=\"btn btn-default\" [ngStyle]=\"{color: 'black'}\" routerLink=\"/addRoute\">Add New Route</button>\n        \n      </div>\n    </div>\n    <br>\n    <!--only admin can add an admin-->\n    <ul class=\"list-group\">\n      <li class=\"list-group-item\">Admin Name : {{admin.name}} </li>\n      \n    </ul>\n  </div>\n</div>\n"
 
 /***/ }),
 
-/***/ 679:
+/***/ 677:
 /***/ (function(module, exports) {
 
 module.exports = "<div class=\"container\">\n<h1 class=\"h1\">Routes</h1>\n<div>\n  <table class=\"table table-striped\">\n    <thead>\n      <tr>\n        <th>Route ID</th>\n        <th>Halt ID</th>\n        <th>Weight</th>\n        <th>latitude</th>\n        <th>longitude</th>\n      </tr>\n    </thead>\n    <tbody  *ngFor=\"let route of routes\">\n      <tr>\n        <td>{{route.routeId}}</td>\n        <td>{{route.haltId}}</td>\n        <td>{{route.weight}}</td>\n        <td>{{route.latitude}}</td>\n        <td>{{route.longitude}}</td>\n        </tr>\n    </tbody>\n    </table> \n      \n     \n    \n</div>\n\n\n</div>\n\n"
 
 /***/ }),
 
-/***/ 718:
+/***/ 716:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(390);
@@ -722,5 +669,5 @@ module.exports = __webpack_require__(390);
 
 /***/ })
 
-},[718]);
+},[716]);
 //# sourceMappingURL=main.bundle.map
