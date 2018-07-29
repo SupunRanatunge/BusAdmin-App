@@ -117,16 +117,27 @@ router.post('/authenticateAdmin', (req, res, next) =>{
                 }
 
             })
-           
-                
-            
-
         }
     })
-
-
 });
 
+router.get('/routeDetails', (req, res, next) => {
+    
+    connection.query("SELECT * FROM route" , (error,results)=>{
+        if(error){
+            console.log(error)
+        }else {
+            res.send(results)
+           }
+    });
+});
 
+router.delete('/deleteRoute', (req, res, next) => {
+    console.log('ddddddd')
+    const routeId = req.body.routeId
+    console.log(routeId)
+    connection.query("delete from route where routeId ="+"'"+routeId+"'")
+
+});
 
 module.exports = router;
