@@ -41,7 +41,7 @@ router.post('/register', function(req, res) {
     bcrypt.genSalt(10, (err, salt) =>{
         bcrypt.hash(password, salt, (err, hash)=> {
             password = hash;
-            connection.query("INSERT INTO admin VALUES "+"("+ id+",'"+name+"','"+password+"')", (error, result)=>{
+            connection.query("INSERT INTO Admin VALUES "+"('"+ id+"','"+name+"','"+password+"')", (error, result)=>{
             if (error) {
                 res.json({success: false, msg: "failed to register"})
             }else {
@@ -58,7 +58,7 @@ router.post('/addUser', function(req, res) {
     userName = req.body.name
     balance = req.body.balance
     status = req.body.status
-    connection.query("INSERT INTO user VALUES "+"('"+ userId+"','"+userName+"',"+balance+",'"+status+"')", (error, result)=>{
+    connection.query("INSERT INTO User VALUES "+"('"+ userId+"','"+userName+"',"+balance+",'"+status+"')", (error, result)=>{
     if (error) {
         res.json({success: false, msg: "failed to register"})
     }else {
@@ -75,7 +75,7 @@ router.post('/addRoute', function(req, res) {
     weight = req.body.weight
     latitude = req.body.latitude
     longitude = req.body.longitude
-    connection.query("INSERT INTO route VALUES "+"('"+ routeId+"',"+haltId+","+weight+","+latitude+","+longitude+")", (error, result)=>{
+    connection.query("INSERT INTO Route VALUES "+"('"+ routeId+"','"+haltId+"',"+weight+","+latitude+","+longitude+")", (error, result)=>{
     if (error) {
         res.json({success: false, msg: "failed to add route"})
     }else {
@@ -88,7 +88,7 @@ router.post('/addRoute', function(req, res) {
 router.post('/authenticateAdmin', (req, res, next) =>{
     id = req.body.id
     password = req.body.password
-    connection.query("SELECT password,name FROM admin where id=?",id , (error,results)=>{
+    connection.query("SELECT password,name FROM Admin where id=?",id , (error,results)=>{
         if(error){
             console.log(error)
         }else {
@@ -123,7 +123,7 @@ router.post('/authenticateAdmin', (req, res, next) =>{
 
 router.get('/routeDetails', (req, res, next) => {
     
-    connection.query("SELECT * FROM route" , (error,results)=>{
+    connection.query("SELECT * FROM Route" , (error,results)=>{
         if(error){
             console.log(error)
         }else {
@@ -136,7 +136,7 @@ router.delete('/deleteRoute', (req, res, next) => {
     console.log('ddddddd')
     const routeId = req.body.routeId
     console.log(routeId)
-    connection.query("delete from route where routeId ="+"'"+routeId+"'")
+    connection.query("delete from Route where routeId ="+"'"+routeId+"'")
 
 });
 

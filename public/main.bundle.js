@@ -429,7 +429,7 @@ var AddUserComponent = (function () {
             id: this.id,
             name: this.name,
             balance: this.balance,
-            status: this.status
+            status: 'Out'
         };
         this.adminService.addUser(user).subscribe(function (data) {
             if (data.success) {
@@ -682,7 +682,7 @@ module.exports = "<body>\n    <form class=\"text-center\">\n    \n      <h1 clas
 /***/ 675:
 /***/ (function(module, exports) {
 
-module.exports = "<body>\n    <form class=\"text-center\">\n    \n      <h1 class=\"h3 mb-3 font-weight-normal\">Add New User</h1>\n      <div class=\"container\">\n        <div class=\"form-group\">\n          <!-- <flash-messages></flash-messages> -->\n          <input type=\"text\" class=\"form-control input-lg\" [(ngModel)]=\"id\" name=\"id\" placeholder=\"User ID\" autofocus><br><br>\n          <input type=\"text\" class=\"form-control input-lg\" [(ngModel)]=\"name\" name=\"name\" placeholder=\"Name\" autofocus><br><br>\n          <input type=\"text\" class=\"form-control input-lg\" [(ngModel)]=\"balance\" name=\"balance\" placeholder=\"Balance\" autofocus><br><br>\n          <input type=\"text\" class=\"form-control input-lg\" [(ngModel)]=\"status\" name=\"status\" placeholder=\"Status\" autofocus><br><br>\n          \n        </div>\n      </div>\n    \n    \n      <button (click)=\"addUser()\" class=\"btn btn-lg btn-primary \" type=\"submit\">Add User</button>\n      \n    </form> \n  </body>"
+module.exports = "<body>\n    <form class=\"text-center\">\n    \n      <h1 class=\"h3 mb-3 font-weight-normal\">Add New User</h1>\n      <div class=\"container\">\n        <div class=\"form-group\">\n          <!-- <flash-messages></flash-messages> -->\n          <input type=\"text\" class=\"form-control input-lg\" [(ngModel)]=\"id\" name=\"id\" placeholder=\"User ID\" autofocus><br><br>\n          <input type=\"text\" class=\"form-control input-lg\" [(ngModel)]=\"name\" name=\"name\" placeholder=\"Name\" autofocus><br><br>\n          <input type=\"text\" class=\"form-control input-lg\" [(ngModel)]=\"balance\" name=\"balance\" placeholder=\"Balance\" autofocus><br><br>\n          \n          \n        </div>\n      </div>\n    \n    \n      <button (click)=\"addUser()\" class=\"btn btn-lg btn-primary \" type=\"submit\">Add User</button>\n      \n    </form> \n  </body>"
 
 /***/ }),
 
