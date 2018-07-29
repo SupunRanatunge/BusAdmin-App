@@ -18,13 +18,13 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use('/admins', admins);
 
-app.use(express.static(path.join(__dirname,'Public')));
+app.use(express.static(path.join(__dirname,'public')));
 
 app.use(passport2.initialize());
 app.use(passport2.session());
 
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public/index.html'))
+    res.sendFile(path.join(__dirname, 'public/index.html'));
 })
 
 app.listen(port, () => {
